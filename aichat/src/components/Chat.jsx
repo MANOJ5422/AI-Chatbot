@@ -91,11 +91,14 @@ export default function Chat() {
     const userMsg = { sender: "user", text: input };
 
     // ✅ Case insensitive match
-    const foundReply = replies.find(
-      (item) =>
-        item.question.toLowerCase().trim() ===
-        input.toLowerCase().trim()
-    );
+    // const foundReply = replies.find(
+    //   (item) =>
+    //     item.question.toLowerCase().trim() ===
+    //     input.toLowerCase().trim()
+    // );
+    const foundReply = replies.find((item) =>
+  input.toLowerCase().includes(item.question.toLowerCase())
+);
 
     const botMsg = {
       sender: "bot",
