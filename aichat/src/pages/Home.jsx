@@ -1,8 +1,8 @@
-// import Chat from "../components/Chat";
+import Chat from "../components/Chat";
 
-// export default function Home() {
-//   return <Chat />;
-// }
+export default function Home() {
+  return <Chat />;
+}
 
 // import { useState } from "react";
 // import data from "../data/replies.json";
@@ -49,42 +49,42 @@
 
 
 
-import { useState } from "react";
-import data from "../data/replies.json";
+// import { useState } from "react";
+// import data from "../data/replies.json";
 
-export default function Home() {
-  const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState("");
+// export default function Home() {
+//   const [question, setQuestion] = useState("");
+//   const [answer, setAnswer] = useState("");
 
-  const handleSubmit = () => {
-    const found = data.find(
-      (item) =>
-        item.question.toLowerCase().trim() ===
-        question.toLowerCase().trim()
-    );
+//   const handleSubmit = () => {
+//     const found = data.find(
+//       (item) =>
+//         item.question.toLowerCase().trim() ===
+//         question.toLowerCase().trim()
+//     );
 
-    if (found) {
-      setAnswer(found.answer);
+//     if (found) {
+//       setAnswer(found.answer);
 
-      const history =
-        JSON.parse(localStorage.getItem("conversations")) || [];
+//       const history =
+//         JSON.parse(localStorage.getItem("conversations")) || [];
 
-      history.push({ text: found.answer });
+//       history.push({ text: found.answer });
 
-      localStorage.setItem("conversations", JSON.stringify(history));
-    }
-  };
+//       localStorage.setItem("conversations", JSON.stringify(history));
+//     }
+//   };
 
-  return (
-    <>
-      <input
-        value={question}
-        onChange={(e) => setQuestion(e.target.value)}
-      />
+//   return (
+//     <>
+//       <input
+//         value={question}
+//         onChange={(e) => setQuestion(e.target.value)}
+//       />
 
-      <button onClick={handleSubmit}>Ask</button>
+//       <button onClick={handleSubmit}>Ask</button>
 
-      {answer && <p>{answer}</p>}
-    </>
-  );
-}
+//       {answer && <p>{answer}</p>}
+//     </>
+//   );
+// }

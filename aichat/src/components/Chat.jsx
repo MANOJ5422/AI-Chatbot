@@ -1,3 +1,9 @@
+// 
+
+
+
+
+
 import { useState } from "react";
 import replies from "../data/replies.json";
 import Message from "./Message";
@@ -12,9 +18,16 @@ export default function Chat() {
     e.preventDefault();
 
     const userMsg = { sender: "user", text: input };
+
     const key = input.toLowerCase().trim();
-    const botText =
-      replies[key] || "Sorry, Did not understand your query!";
+
+    const foundReply = replies.find(
+      (item) => item.question.toLowerCase().trim() === key
+    );
+
+    const botText = foundReply
+      ? foundReply.answer
+      : "Sorry, Did not understand your query!";
 
     const botMsg = { sender: "bot", text: botText };
 
@@ -28,6 +41,11 @@ export default function Chat() {
 
   return (
     <>
+      {/* New Query Button */}
+      <button onClick={() => setMessages([])}>
+        New Query?
+      </button>
+
       {messages.map((msg, i) => (
         <Message key={i} msg={msg} onFeedback={() => setFeedbackFor(i)} />
       ))}
@@ -38,8 +56,12 @@ export default function Chat() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
+
         <button type="submit">Ask</button>
-        <button type="button" onClick={handleSave}>Save</button>
+
+        <button type="button" onClick={handleSave}>
+          Save
+        </button>
       </form>
 
       {feedbackFor !== null && (
