@@ -28,7 +28,7 @@ function App() {
 
         {/* ✅ Required navigation links */}
         <nav>
-          <Link to="/">New Query</Link>
+          <Link to="/">New Query?</Link>
           <Link to="/history">Past Conversations</Link>
         </nav>
       </header>
