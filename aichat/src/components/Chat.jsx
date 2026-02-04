@@ -106,35 +106,6 @@ export default function Chat() {
     setInput("");
   };
   
-//   const handleAsk = (e) => {
-//     e.preventDefault();
-
-//     if (!input.trim()) return;
-
-//     const userMsg = { sender: "user", text: input };
-
-//     // ✅ Case insensitive match
-//     // const foundReply = replies.find(
-//     //   (item) =>
-//     //     item.question.toLowerCase().trim() ===
-//     //     input.toLowerCase().trim()
-//     // );
-//     const foundReply = replies.find((item) =>
-//   input.toLowerCase().includes(item.question.toLowerCase())
-// );
-
-//     const botMsg = {
-//       sender: "bot",
-//       text: foundReply
-//         ? foundReply.answer
-//         : "Sorry, Did not understand your query!"
-//     };
-
-//     // ✅ Safe state update
-//     setMessages((prev) => [...prev, userMsg, botMsg]);
-
-//     setInput("");
-//   };
 
 
   const handleSave = () => {
