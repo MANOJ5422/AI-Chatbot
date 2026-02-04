@@ -85,33 +85,57 @@ export default function Chat() {
 
   const handleAsk = (e) => {
     e.preventDefault();
-
-    if (!input.trim()) return;
-
+  
+    const query = input.toLowerCase().trim();
+    if (!query) return;
+  
     const userMsg = { sender: "user", text: input };
-
-    // ✅ Case insensitive match
-    // const foundReply = replies.find(
-    //   (item) =>
-    //     item.question.toLowerCase().trim() ===
-    //     input.toLowerCase().trim()
-    // );
-    const foundReply = replies.find((item) =>
-  input.toLowerCase().includes(item.question.toLowerCase())
-);
-
+  
+    const found = replies.find((item) =>
+      query.includes(item.question)
+    );
+  
     const botMsg = {
       sender: "bot",
-      text: foundReply
-        ? foundReply.answer
+      text: found
+        ? found.answer
         : "Sorry, Did not understand your query!"
     };
-
-    // ✅ Safe state update
+  
     setMessages((prev) => [...prev, userMsg, botMsg]);
-
     setInput("");
   };
+  
+//   const handleAsk = (e) => {
+//     e.preventDefault();
+
+//     if (!input.trim()) return;
+
+//     const userMsg = { sender: "user", text: input };
+
+//     // ✅ Case insensitive match
+//     // const foundReply = replies.find(
+//     //   (item) =>
+//     //     item.question.toLowerCase().trim() ===
+//     //     input.toLowerCase().trim()
+//     // );
+//     const foundReply = replies.find((item) =>
+//   input.toLowerCase().includes(item.question.toLowerCase())
+// );
+
+//     const botMsg = {
+//       sender: "bot",
+//       text: foundReply
+//         ? foundReply.answer
+//         : "Sorry, Did not understand your query!"
+//     };
+
+//     // ✅ Safe state update
+//     setMessages((prev) => [...prev, userMsg, botMsg]);
+
+//     setInput("");
+//   };
+
 
   const handleSave = () => {
     localStorage.setItem("conversations", JSON.stringify(messages));
